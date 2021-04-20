@@ -1,7 +1,9 @@
-import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { useEffect } from 'react'
 
+import { GetStaticProps } from 'next'
+
+import c from '../services/api'
+import api from '../services/api'
 interface EpisodesProps {
   episodes: Array<{
     id: string,
@@ -36,8 +38,8 @@ export default function Home(props: EpisodesProps) {
 
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch('http://localhost:3333/episodes')
-  const data = await response.json()
+  const response = await api.get('/episodes')
+  const data = await response.data
 
   return {
     props: {
