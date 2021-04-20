@@ -20,7 +20,6 @@ O Podcastr foi construindo usando essas tecnologias:
 ### Dependências de Desenvolvimento
 - [TypeScript](https://www.typescriptlang.org)
 - [VSCode](https://code.visualstudio.com/)
-- [JSON Server](https://github.com/typicode/json-server)
 - [REST Client (VSCode Extension)](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 
 ## 🚀 Como executar o projeto
@@ -43,7 +42,7 @@ npm run server
 npm run build && npm start
 ```
 
-**Obs: Como o objetivo do NLW foi React, a API construída foi usando o [JSON Server](https://github.com/typicode/json-server)**
+**Obs: Como o objetivo do NLW foi React, a API construída é estática**
 
 ## 🙋‍♂️ Contribuindo
 
