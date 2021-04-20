@@ -36,10 +36,7 @@ cd podcastr
 # Instale as dependencias
 npm install
 
-# Inicie a API
-npm run server
-
-# E em outro terminal execute
+# E execute
 npm run build && npm start
 ```
 
