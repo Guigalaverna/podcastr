@@ -16,6 +16,7 @@ O Podcastr foi construindo usando essas tecnologias:
 - [Next.js](https://nextjs.org)
 - [Sass](https://sass-lang.com/)
 - [Date FNS](https://date-fns.org/)
+- [Axios](https://github.com/axios/axios)
 
 ### Dependências de Desenvolvimento
 - [TypeScript](https://www.typescriptlang.org)
