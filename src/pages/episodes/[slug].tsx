@@ -12,7 +12,7 @@ import Image from "next/image";
 import styles from "./Episode.module.scss";
 import Link from "next/link";
 import {usePlayer} from "../../contexts/PlayerContext";
-import { Head } from "next/document";
+import Head from "next/head";
 
 interface Episode {
   id: string;
