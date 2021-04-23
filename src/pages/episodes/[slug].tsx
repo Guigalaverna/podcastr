@@ -33,8 +33,8 @@ export default function Episode({ episode }: EpisodeProps) {
   return (
     <div className={styles.episode}>
       <div className={styles.thumbnailContainer}>
-        <Link href='/'>
-          <button type='button'>
+        <Link href="/">
+          <button type="button">
             <img src="/arrow-left.svg" alt="Voltar" />
           </button>
         </Link>
@@ -44,7 +44,7 @@ export default function Episode({ episode }: EpisodeProps) {
           src={episode.thumbnail}
           objectFit="cover"
         />
-        <button type='button'>
+        <button type="button">
           <img src="/play.svg" alt="Tocar" />
         </button>
       </div>
@@ -56,7 +56,10 @@ export default function Episode({ episode }: EpisodeProps) {
         <span>{episode.durationAsString}</span>
       </header>
 
-      <div className={styles.description} dangerouslySetInnerHTML={{ __html: episode.description }}/>
+      <div
+        className={styles.description}
+        dangerouslySetInnerHTML={{ __html: episode.description }}
+      />
     </div>
   );
 }
