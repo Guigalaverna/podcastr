@@ -76,7 +76,9 @@ export function Player() {
           <span>{episode.members}</span>
         </div>
       ) : (
-        <div></div>
+        <div className={styles.emptyPlayer}>
+          <strong>Selecione um podcast para ouvir</strong>
+        </div>
       )}
       <footer className={!episode ? styles.empty : ""}>
         <div className={styles.progress}>

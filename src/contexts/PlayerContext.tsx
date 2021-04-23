@@ -22,6 +22,7 @@ interface PlayerContextData {
   playNext: () => void;
   playPrevious: () => void;
   toogleShuffle: () => void;
+  clearPlayerState: () => void;
   
   hasNext: boolean
   hasPrevious: boolean
@@ -86,6 +87,15 @@ export default function PlayerProvider({ children }: PlayerProviderProps) {
       setCurrentEpisodeIndex(currentEpisodeIndex - 1);
     }
   }
+
+  function clearPlayerState() {
+    if (hasNext) {
+      playNext()
+    } else {
+      setIsPlaying(false);
+      setEpisodeList([])
+    }
+  }
   
 
   return (
@@ -105,7 +115,8 @@ export default function PlayerProvider({ children }: PlayerProviderProps) {
         hasNext,
         hasPrevious,
         toogleShuffle,
-        isShuffling
+        isShuffling,
+        clearPlayerState
       }}
     >
       {children}
