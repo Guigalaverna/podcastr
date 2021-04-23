@@ -11,6 +11,7 @@ import api from "../../services/api";
 import Image from "next/image";
 
 import styles from "./Episode.module.scss";
+import Link from "next/link";
 
 interface Episode {
   id: string;
@@ -34,9 +35,11 @@ export default function Episode({ episode }: EpisodeProps) {
   return (
     <div className={styles.episode}>
       <div className={styles.thumbnailContainer}>
-        <button type='button'>
-          <img src="/arrow-left.svg" alt="Voltar" />
-        </button>
+        <Link href='/'>
+          <button type='button'>
+            <img src="/arrow-left.svg" alt="Voltar" />
+          </button>
+        </Link>
         <Image
           width={700}
           height={160}
@@ -44,7 +47,7 @@ export default function Episode({ episode }: EpisodeProps) {
           objectFit="cover"
         />
         <button type='button'>
-          <img src="/arrow-right.svg" alt="Tocar" />
+          <img src="/play.svg" alt="Tocar" />
         </button>
       </div>
 
