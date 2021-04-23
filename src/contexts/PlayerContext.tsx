@@ -14,6 +14,7 @@ interface PlayerContextData {
 
   play: (episode) => void;
   tooglePlay: () => void;
+  setPlayingState: (state: boolean) => void;
 }
 
 export const PlayerContext = createContext({} as PlayerContextData);
@@ -33,9 +34,13 @@ export default function PlayerProvider({ children }) {
     setIsPlaying(!isPlaying);
   }
 
+  function setPlayingState(state: boolean) {
+    setIsPlaying(state);
+  }
+
   return (
     <PlayerContext.Provider
-      value={{ currentEpisodeIndex, episodeList, play, isPlaying, tooglePlay }}
+      value={{ currentEpisodeIndex, episodeList, play, isPlaying, tooglePlay, setPlayingState }}
     >
       {children}
     </PlayerContext.Provider>
