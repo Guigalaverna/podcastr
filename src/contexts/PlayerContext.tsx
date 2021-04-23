@@ -11,13 +11,18 @@ interface PlayerContextData {
   episodeList: Episode[];
   currentEpisodeIndex: number;
   isPlaying: boolean;
+  isLooping: boolean;
+  isShuffling: boolean;
 
   play: (episode) => void;
   setPlayingState: (state: boolean) => void;
   playList: (episodes: Episode[], index: number) => void;
   tooglePlay: () => void;
+  toogleLoop: () => void;
   playNext: () => void;
   playPrevious: () => void;
+  toogleShuffle: () => void;
+  
   hasNext: boolean
   hasPrevious: boolean
 }
@@ -32,6 +37,8 @@ export default function PlayerProvider({ children }: PlayerProviderProps) {
   const [episodeList, setEpisodeList] = useState([]);
   const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isLooping, setIsLooping] = useState(false)
+  const [isShuffling, setIsShuffling] = useState(false)
 
   const hasNext = currentEpisodeIndex + 1 < episodeList.length;
   const hasPrevious = currentEpisodeIndex > 1;
@@ -52,16 +59,26 @@ export default function PlayerProvider({ children }: PlayerProviderProps) {
     setIsPlaying(!isPlaying);
   }
 
+  function toogleLoop() {
+    setIsLooping(!isLooping);
+  }
+
+  function toogleShuffle() {
+    setIsShuffling(!isShuffling);
+  }
+
   function setPlayingState(state: boolean) {
     setIsPlaying(state);
   }
 
   function playNext() {
-    const nextEpisodeIndex = currentEpisodeIndex + 1;
-
-    if (hasNext) {
+    if (isShuffling) {
+      const nextRandomEpisodeIndex = Math.floor(Math.random() * episodeList.length)
+      setCurrentEpisodeIndex(nextRandomEpisodeIndex)
+    } else if (hasNext) {
       setCurrentEpisodeIndex(currentEpisodeIndex + 1);
     }
+
   }
 
   function playPrevious() {
@@ -69,6 +86,7 @@ export default function PlayerProvider({ children }: PlayerProviderProps) {
       setCurrentEpisodeIndex(currentEpisodeIndex - 1);
     }
   }
+  
 
   return (
     <PlayerContext.Provider
@@ -77,13 +95,17 @@ export default function PlayerProvider({ children }: PlayerProviderProps) {
         episodeList,
         play,
         isPlaying,
+        isLooping,
         tooglePlay,
+        toogleLoop,
         setPlayingState,
         playList,
         playNext,
         playPrevious,
         hasNext,
-        hasPrevious
+        hasPrevious,
+        toogleShuffle,
+        isShuffling
       }}
     >
       {children}
