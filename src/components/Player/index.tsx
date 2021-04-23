@@ -1,5 +1,5 @@
-import { useContext, useEffect, useRef } from "react";
-import { PlayerContext } from "../../contexts/PlayerContext";
+import { useEffect, useRef } from "react";
+import { usePlayer } from "../../contexts/PlayerContext";
 
 import Image from "next/image";
 
@@ -14,8 +14,12 @@ export function Player() {
     currentEpisodeIndex,
     isPlaying,
     tooglePlay,
-    setPlayingState
-  } = useContext(PlayerContext);
+    setPlayingState,
+    playNext,
+    playPrevious,
+    hasNext,
+    hasPrevious
+  } = usePlayer();
 
   const episode = episodeList[currentEpisodeIndex];
 
@@ -85,7 +89,7 @@ export function Player() {
           <button type="button" disabled={!episode}>
             <img src="/shuffle.svg" alt="Embaralhar" />
           </button>
-          <button type="button" disabled={!episode}>
+          <button type="button" disabled={!episode || !hasPrevious} onClick={playPrevious}>
             <img src="/play-previous.svg" alt="Tocar anterior" />
           </button>
           <button
@@ -100,7 +104,7 @@ export function Player() {
               <img src="/play.svg" alt="Tocar" />
             )}
           </button>
-          <button type="button" disabled={!episode}>
+          <button type="button" disabled={!episode || !hasNext} onClick={playNext}>
             <img src="/play-next.svg" alt="Tocar próxima" />
           </button>
           <button type="button" disabled={!episode}>
