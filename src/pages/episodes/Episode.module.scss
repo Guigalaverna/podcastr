@@ -25,14 +25,14 @@
       &:first-child {
         left: 0;
         top: 50%;
-        background: var(--purple-500);
+        background: var(--primary-500);
         transform: translate(-50%, -50%);
       }
 
       &:last-child {
         right: 0;
         top: 50%;
-        background: var(--green-500);
+        background: var(--secondary-500);
         transform: translate(50%, -50%);
       }
 

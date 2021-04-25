@@ -42,7 +42,7 @@ export default function Home({ allEpisodes, latestEpisodes }: HomeProps) {
         <title>Início | Podcastr</title>
       </Head>
 
-      <main className={styles.homePage}>
+      <main className={`${styles.homePage} main-page`}>
         <section className={styles.latestEpisodes}>
           <h2>Últimos lançamentos</h2>
 

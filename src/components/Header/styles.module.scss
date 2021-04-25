@@ -1,5 +1,5 @@
 .container {
-  background: var(--white);
+  background: var(--background);
   height: 6.5rem;
 
   display: flex;
@@ -18,5 +18,17 @@
   span {
     margin-left: auto;
     text-transform: capitalize;
+  }
+
+  select {
+    margin-left: 1rem;
+    border: none;
+
+    background-color: var(--primary-800);
+    color: var(--white);
+
+    option {
+      color: black
+    }
   }
 }
